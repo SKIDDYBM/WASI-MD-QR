@@ -19,7 +19,7 @@ function removeFile(FilePath){
 router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
-        async function WASI_MD_PAIR_CODE() {
+        async function IT_TECH_PAIR_CODE() {
         const {
             state,
             saveCreds
@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
                 let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                 await delay(800);
                let b64data = Buffer.from(data).toString('base64');
-               let session = await Pair_Code_By_Wasi_Tech.sendMessage(Pair_Code_By_it_Tech.user.id, { text: '' + b64data });
+               let session = await Pair_Code_By_it_Tech.sendMessage(Pair_Code_By_it_Tech.user.id, { text: '' + b64data });
 
                let IT_TECH_TEXT = `
 *_Pair Code Connected by IT TECH_*
