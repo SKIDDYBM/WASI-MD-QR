@@ -1,25 +1,41 @@
-{
-"name": "web-pair",
-    "version": "0.0.1",
-    "description": "A multi functional whatsapp bot Web paircode.",
-    "main": "index.js",
-    "scripts": {
-      "start": "pm2 start index.js --deep-monitoring --attach --name IT-TECH-BRO-S ",
-      "stop": "pm2 stop vajira-md",
-     "restart": "pm2 restart vajira-md"
-    },
-  "dependencies": {
-    "@whiskeysockets/baileys": "6.7.17",              
-    "@adiwajshing/keyed-db": "^0.2.4",
-    "qrcode": "^1.5.3",
-    "awesome-phonenumber": "^2.64.0",
-    "pino": "^8.1.0",
-    "phone" : "3.1.30",
-    "body-parser": "^1.20.1",
-    "express": "^4.18.1",
-    "path": "^0.12.7",
-    "megajs": "1.1.7",
-    "pm2": "^5.4.0",
-    "async-mutex":"0.4.1"
-   }
-}
+import argparse
+import sys
+
+def enter_code_flow():
+    session_code = input("Enter your WhatsApp session code: ")
+    # Replace this with actual session logic
+    print(f"Session ID (from code): {session_code}")
+
+def scan_qr_flow():
+    print("Please scan the QR code with your WhatsApp application.")
+    # --- WhatsApp QR code logic goes here ---
+    # For demonstration, just fake a session id
+    # In a real bot, you'd use your WhatsApp library to show and process the QR
+    fake_session_id = "SESSION_ID_OBTAINED_FROM_QR"
+    print(f"Session ID (from QR scan): {fake_session_id}")
+
+def main():
+    parser = argparse.ArgumentParser(description="WhatsApp Bot Session Render")
+    parser.add_argument("render-session", nargs='?', help="Render a WhatsApp session by code or QR scan")
+    parser.add_argument("--method", choices=["code", "scan"], help="Choose input method: code or scan")
+    args = parser.parse_args()
+
+    if args.method == "code":
+        enter_code_flow()
+    elif args.method == "scan":
+        scan_qr_flow()
+    else:
+        print("Choose method to obtain session:")
+        print("1. Enter code manually")
+        print("2. Scan QR code")
+        choice = input("Select (1/2): ").strip()
+        if choice == "1":
+            enter_code_flow()
+        elif choice == "2":
+            scan_qr_flow()
+        else:
+            print("Invalid choice")
+            sys.exit(1)
+
+if __name__ == "__main__":
+    main()
